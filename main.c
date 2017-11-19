@@ -2,6 +2,8 @@
 #include "menus/MenuPrincipal.c"
 
 int main() {
-   menuPrincipal();
+  while (1) {
+    menuPrincipal();
+  }
    return 0;
 }

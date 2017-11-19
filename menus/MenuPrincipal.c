@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include "MenuVehiculo.c"
+#include "MenuEncomiendas.c"
+#include <stdlib.h>
 
 void menuPrincipal() {
    int opcion;
@@ -9,9 +12,10 @@ void menuPrincipal() {
    printf("Menu Principal \n\n" );
    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n" );
    printf("Digite cualquiera de las siguientes opciones:\n\n");
-   printf("1 => Vehiculos \n");
-   printf("2 => Encominedas \n");
+   printf("1 => Vehiculos \n\n");
+   printf("2 => Encominedas \n\n");
    printf("0 => Salir \n\n");
+   printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n" );
    do {
       printf("Ingrese su opcion: ");
       scanf("%d", &opcion);
@@ -22,13 +26,13 @@ void menuPrincipal() {
 
    switch (opcion) {
    case 1:
-      printf("1\n");
+      menuVehiculo();
       break;
    case 2:
-      printf("2\n" );
+      menuEncomiendas();
       break;
    case 0:
-      printf("0\n" );
-      break;
+      printf("\nMuchas Gracias vuelva pronto\n");
+      exit(0);
    };
 }
