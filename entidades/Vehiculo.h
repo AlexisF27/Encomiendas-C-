@@ -6,5 +6,5 @@ typedef struct vehiculo {
         Fecha fechaFabricacion;
         float capacidad;
         EstadoVehiculo estadoVehiculo;
-        char observacion;
+        char *observacion;
 } Vehiculo;

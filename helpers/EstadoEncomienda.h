@@ -3,4 +3,4 @@ typedef enum estadoEncomienda {
         CARGADA,
         ENTREGADA,
         DEVUELTA
-}EstadoEncomienda;
+} EstadoEncomienda;

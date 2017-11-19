@@ -4,9 +4,9 @@
 
 typedef struct encomienda {
         int numeroRegistro;
-        Fecha fechaRegistro;
+        EstadoEncomienda estado;
         float peso;
         Ciudad destino;
-        EstadoEncomienda estado;
+        Fecha fechaRegistro;
         Fecha fechaEntregaDevolucion;
 } Encomienda;
