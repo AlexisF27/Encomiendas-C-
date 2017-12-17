@@ -1,16 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "../entidades/Vehiculo.c"
 
 void menuVehiculo(){
    int opcion;
-   printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-   printf("\nVehiculos\n" );
-   printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+   Vehiculo vehiculo;
+   printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n" );
+   printf("\r              Vehiculos\n\n" );
+   printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n" );
    printf("Digite una de las siguientes opciones\n\n" );
    printf("1 => Insertar \n\n");
    printf("2 => Listar/Consultar \n\n");
    printf("0 => Regresar \n\n");
-   printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+   printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n" );
 
    do {
       printf("Ingrese su opcion:");
@@ -22,10 +24,10 @@ void menuVehiculo(){
 
    switch (opcion) {
    case 1:
-      printf("\n 1\n");
+      vehiculo = leerVehiculo();
       break;
    case 2:
-      printf("2\n" );
+      imprimirVehiculo(vehiculo);
       break;
    case 0:
       printf("Me fui\n" );

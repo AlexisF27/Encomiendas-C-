@@ -1,19 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "../entidades/Encomienda.c"
 
 void menuEncomiendas (){
    int opcion;
-   printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
-   printf("Encomiendas\n\n");
-   printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+   Encomienda encomienda;
+   printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n" );
+   printf("\r            Encomiendas\n\n");
+   printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n" );
    printf("Digite una de las siguientes opociones:\n");
    printf(" 1 => Insertar \n\n");
    printf(" 2 => Listar/Consultar \n\n");
    printf(" 3 => Eliminar encomiendas\n\n");
    printf(" 4 => Elegir otro destinon \n\n");
    printf(" 0 => Regresar\n\n");
-   printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
-
+   printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n" );
    do {
       printf(" Dijite su opcion: ");
       scanf("%d", &opcion);
@@ -25,10 +26,10 @@ void menuEncomiendas (){
 
    switch (opcion) {
    case 1:
-      printf("1\n");
+      encomienda = leerEncomienda();
       break;
    case 2:
-      printf("2\n");
+      imprimirEncomienda(encomienda);
       break;
    case 3:
       printf("3\n");
