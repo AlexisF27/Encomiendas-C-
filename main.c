@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include "menus/MenuPrincipal.c"
-// // #include "entidades/Vehiculo.h"
-// #include "entidades/Encomienda.h"
+#include "entidades/Vehiculo.c"
+#include "entidades/Encomienda.c"
 
 int main(){
 
-   // Encomienda encomienda;
-   // encomienda = leerEncomienda();
+  Vehiculo vehiculos[10];
+  Encomienda encomiendas[100];
 
-   while (1) {
-   menuPrincipal();
-   }
+  do{
+    menuPrincipal(vehiculos, encomiendas);
+  } while (1);
+
    return 0;
 }

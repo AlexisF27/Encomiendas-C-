@@ -17,6 +17,41 @@ typedef struct encomienda {
         char observacion [100];
 } Encomienda;
 
+int validarEncomienda(int numeroRegistro, int tipo){
+  if(numeroRegistro <= 0 || numeroRegistro >= 100){
+    if(tipo == 1){
+    printf("ERROR: El numero registro esta compuesto de 100 caracters\n");
+    }
+    return 0;
+  }
+  return 1;
+}
+
+int tamanoEncomiendas(Encomienda encomiendas[]){
+  for (int i = 0; i < 100; i++) {
+    if (validarEncomienda(encomiendas[i].numeroRegistro, 0) == 0){
+      return i;
+    }
+  }
+  return 0;
+}
+
+int validarEncomiendaObservacion(char *observacion){
+  if(strlen(observacion) != 100){
+    printf("ERROR: La observacion esta compuesta de 100 caracteres\n");
+    return 0;
+  }
+  return 1;
+}
+
+int validarEncomiendaRepetida(Encomienda encomiendas[], int numeroRegistro){
+  for (int  i = 0; i < tamanoEncomiendas(encomiendas); i++) {
+    printf("ERROR: La Encomienda ingresada ya existe\n");
+    return 0;
+  }
+  return 1;
+}
+
 int leerEstadoEncomienda(){
   int opcion;
   printf("Digite cualquiera de las siguientes opciones\n");
@@ -39,7 +74,9 @@ return opcion;
 Encomienda leerEncomienda(){
         Encomienda encomienda;
 
-        leerEntero("Numero de Registro", &encomienda.numeroRegistro);
+        do {
+          leerEntero("Numero de Registro", &encomienda.numeroRegistro);
+        } while(validarEncomienda(encomienda.numeroRegistro, 0) == 0);
         do {
           leerFlotante("Peso", &encomienda.peso);
           if (encomienda.peso > 30 || encomienda.peso < 1) {
@@ -50,9 +87,7 @@ Encomienda leerEncomienda(){
         encomienda.fechaEntregaDevolucion = leerFechaEncomienda();
         leerString("Observacion", encomienda.observacion);
 
-        int estado;
-        leerEntero("Estado", &estado);
-        encomienda.estadoEncomienda = estado;
+        encomienda.estadoEncomienda = leerEstadoEncomienda();
 
         return encomienda;
 }
@@ -66,6 +101,7 @@ void imprimirEncomienda(Encomienda encomienda){
       printf("El dia en el que fue la entrega es : %d\n", encomienda.fechaEntregaDevolucion.dia);
       printf("El mes en el que fue la entrega es : %d\n", encomienda.fechaEntregaDevolucion.mes);
       printf("El ano en el que fue la entrega es : %d\n", encomienda.fechaEntregaDevolucion.ano);
+      printf("El valor es %s\n", getEstadoEncomienda(encomienda.estadoEncomienda));
     }
 
 #endif

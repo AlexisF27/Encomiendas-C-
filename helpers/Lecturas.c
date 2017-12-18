@@ -3,11 +3,7 @@
 
 #include <stdio.h>
 #include <ctype.h>
-
-// void leerStrinEntero(char *label, char *value, int *valor) {
-//   printf("Ingrese dos letras y 4 numeros que van a pertenecer a la %s:",label);
-//   scanf( "%s,%d",value,valor);
-// }
+#include <string.h>
 
 void leerString(char *label, char *value){
   printf("Ingrese el valor de %s: ",label);
@@ -24,11 +20,5 @@ void leerEntero(char *label, int *value){
   printf("Ingrese los datos del %s:", label);
   scanf("%d", value);
 }
-
-
-
-// int FicheroEntero(int min, int max){
-//
-// }
 
 #endif

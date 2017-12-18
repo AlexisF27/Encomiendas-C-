@@ -1,10 +1,8 @@
-
-// #include <stdio.h>
 #include "MenuVehiculo.c"
 #include "MenuEncomiendas.c"
-// #include <stdlib.h>
 
-void menuPrincipal() {
+
+void menuPrincipal(Vehiculo vehiculos[], Encomienda encomiendas[]){
    int opcion;
    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n" );
    printf("\t Proyecto numero uno - Encomiendas\n\n");
@@ -26,10 +24,10 @@ void menuPrincipal() {
 
    switch (opcion) {
    case 1:
-      menuVehiculo();
+      menuVehiculo(vehiculos);
       break;
    case 2:
-      menuEncomiendas();
+      menuEncomiendas(encomiendas);
       break;
    case 0:
       printf("\nMuchas Gracias vuelva pronto\n");

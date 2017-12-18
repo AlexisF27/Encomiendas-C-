@@ -2,9 +2,12 @@
 #include <stdlib.h>
 #include "../entidades/Encomienda.c"
 
-void menuEncomiendas (){
+void menuEncomiendas(Encomienda encomiendas[]){
    int opcion;
    Encomienda encomienda;
+   int tamano = tamanoEncomiendas(encomiendas);
+   printf("~~~~~~~~~~~~~~~~~~~\n");
+   printf("%d\n", tamano);
    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n" );
    printf("\r            Encomiendas\n\n");
    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n" );
@@ -27,9 +30,14 @@ void menuEncomiendas (){
    switch (opcion) {
    case 1:
       encomienda = leerEncomienda();
+      if(validarEncomiendaRepetida(encomiendas, encomienda.numeroRegistro) == 1){
+        encomiendas[tamano] = encomienda;
+      }
       break;
    case 2:
-      imprimirEncomienda(encomienda);
+    for(int i = 0; i < tamano; i++){
+        imprimirEncomienda(encomiendas[i]);
+    }
       break;
    case 3:
       printf("3\n");

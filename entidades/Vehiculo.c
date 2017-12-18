@@ -5,8 +5,6 @@
 #include "Encomienda.c"
 
 
-
-
 typedef struct vehiculo {
         char matricula [6];
         Fecha fechaFabricacion;
@@ -16,25 +14,54 @@ typedef struct vehiculo {
 
 
 
-int validarMatricula(char* matricula){
-
+int validarMatricula(char* matricula, int tipo){
+  if(strlen(matricula) != 6){
+    if(tipo == 1){
+      printf("ERROR: la matricula esta compuesta de 6 caracteres\n");
+    }
+    return 0;
+  }
   if (isdigit(matricula [0]) == 0 || isdigit(matricula [1]) == 0 ) {
-    printf("Los dos primeros caracteres tienen que ser numericos\n");
+    if(tipo == 1){
+    printf("ERROR: Los dos primeros caracteres tienen que ser numericos\n");
+    }
     return 0;
   }
   if (isalpha(matricula [2]) == 0 || isalpha(matricula [3]) == 0){
-    printf("Los dos caracteres del medio tienen que ser alfabeticos\n");
+    if (tipo == 1){
+      printf("ERROR: Los dos caracteres del medio tienen que ser alfabeticos\n");
+    }
     return 0;
   }
   if (isdigit(matricula [4]) == 0 || isdigit(matricula [5]) == 0) {
+    if (tipo == 1) {
     printf("Los dos ultimos caracteres tiene que ser numericos\n");
+    }
     return 0;
   }
   return 1;
 }
 
+int tamanoVehiculos(Vehiculo vehiculos[]){
+  for (int i = 0; i < 10; i++){
+    if (validarMatricula(vehiculos[i].matricula, 0) == 0){
+      return i;
+    }
+  }
+  return 0;
+}
 
-void menuEstadoVehiculo(){
+int validarMatriculaRepetida(Vehiculo vehiculos[], char *matricula){
+  for(int i = 0; i < tamanoVehiculos(vehiculos); i++){
+    if(strcmp(vehiculos[i].matricula, matricula) == 0){
+        printf("ERROR: La matricula ingresada es repetida\n");
+        return 0;
+    }
+  }
+    return 1;
+}
+
+int leerEstadoVehiculo(){
   int opcion;
   printf("Digite cualquiera de las siguientes opciones\n");
   printf("1 => DISPONIBLE \n\n");
@@ -49,6 +76,7 @@ void menuEstadoVehiculo(){
       printf("La opcion es invalida vuelva a ingresar su opcion\n");
     }
   } while(opcion < 0 || opcion > 4);
+  return opcion;
 }
 Vehiculo leerVehiculo(){
 
@@ -56,9 +84,7 @@ Vehiculo leerVehiculo(){
 
         do{
         leerString("Matricula", vehiculo.matricula);
-      }while(validarMatricula(vehiculo.matricula) == 0);
-
-
+      }while(validarMatricula(vehiculo.matricula, 1) == 0);
 
         do {
                 leerFlotante("Capacidad", &vehiculo.capacidad);
@@ -66,18 +92,10 @@ Vehiculo leerVehiculo(){
                   printf("El valor de la capacidad tiene que ser entre 1 a 20 (KG)\n" );
                 }
         } while(vehiculo.capacidad > 20 || vehiculo.capacidad < 1);
-
         vehiculo.fechaFabricacion = leerFecha();
-
-        // printf("El numero de la matricula es: %s \n",vehiculo.matricula);
-        vehiculo.estadoVehiculo = leerEstadoEncomienda();
-
+        vehiculo.estadoVehiculo = leerEstadoVehiculo();
         return vehiculo;
 }
-
-
-
-
 
  void imprimirVehiculo(Vehiculo vehiculo){
    printf("El numero de la matricula es: %s \n",vehiculo.matricula);

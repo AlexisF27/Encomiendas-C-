@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include "../entidades/Vehiculo.c"
 
-void menuVehiculo(){
+void menuVehiculo(Vehiculo vehiculos[]){
    int opcion;
    Vehiculo vehiculo;
+   int tamano = tamanoVehiculos(vehiculos);
    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n" );
    printf("\r              Vehiculos\n\n" );
    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n" );
@@ -25,9 +26,15 @@ void menuVehiculo(){
    switch (opcion) {
    case 1:
       vehiculo = leerVehiculo();
+      if(validarMatriculaRepetida(vehiculos, vehiculo.matricula) == 1){
+        vehiculos[tamano] = vehiculo;
+      }
       break;
    case 2:
-      imprimirVehiculo(vehiculo);
+   for (int i = 0; i < tamano; i++) {
+      imprimirVehiculo(vehiculos[i]);
+   }
+
       break;
    case 0:
       printf("Me fui\n" );
