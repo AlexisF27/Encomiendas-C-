@@ -8,7 +8,7 @@
 
 void leerFicheroEncomiendas(Encomienda encomiendas[]){
   int tamano;
-  static const char filename[] = "./encomiendas.txt";
+  static const char filename[] = "encomiendas.txt";
   FILE *file = fopen ( filename, "r" );
   if ( file != NULL )
   {
@@ -54,7 +54,7 @@ void leerFicheroEncomiendas(Encomienda encomiendas[]){
 void leerFicheroVehiculos(Vehiculo vehiculos[]){
   int tamano;
   printf("~~~~~~~~~~~~~\n");
-  static const char filename[] = "./vehiculos.txt";
+  static const char filename[] = "vehiculos.txt";
   FILE *file = fopen ( filename, "r" );
   if ( file != NULL )
   {

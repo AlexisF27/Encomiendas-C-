@@ -1,3 +1,6 @@
+#ifndef MENU_ENCOMIENDAS_C
+#define MENU_ENCOMIENDAS_C
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "../entidades/Encomienda.c"
@@ -49,3 +52,4 @@ void menuEncomiendas(Encomienda encomiendas[]){
       getchar();
    }
 }
+#endif

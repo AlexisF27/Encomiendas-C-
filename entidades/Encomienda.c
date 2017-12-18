@@ -2,10 +2,7 @@
 #define ENCOMIENDA_C
 
 #include "../helpers/EstadoEncomienda.c"
-#include "Ciudad.h"
-#include "Fecha.c"
-
-
+#include "Vehiculo.c"
 
 typedef struct encomienda {
         int numeroRegistro;
@@ -15,6 +12,7 @@ typedef struct encomienda {
         Fecha fechaRegistro;
         Fecha fechaEntregaDevolucion;
         char observacion [100];
+        Vehiculo vehiculo;
 } Encomienda;
 
 int validarEncomienda(int numeroRegistro, int tipo){
@@ -102,6 +100,14 @@ void imprimirEncomienda(Encomienda encomienda){
       printf("El mes en el que fue la entrega es : %d\n", encomienda.fechaEntregaDevolucion.mes);
       printf("El ano en el que fue la entrega es : %d\n", encomienda.fechaEntregaDevolucion.ano);
       printf("El valor es %s\n", getEstadoEncomienda(encomienda.estadoEncomienda));
+      if (validarMatricula(encomienda.vehiculo.matricula, 0) == 1) {
+        printf("El vehiculo asignado es: %s \n", encomienda.vehiculo.matricula);
+      }
     }
+
+void asignarVehiculoAEncomienda(Encomienda *encomienda, Vehiculo vehiculo){
+    encomienda->vehiculo = vehiculo;
+    printf("Vehiculo registrado exitosamente\n");
+}
 
 #endif

@@ -1,3 +1,6 @@
+#ifndef MENU_VEHICULO_C
+#define MENU_VEHICULO_C
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "../entidades/Vehiculo.c"
@@ -42,3 +45,5 @@ void menuVehiculo(Vehiculo vehiculos[]){
    };
 
 }
+
+#endif

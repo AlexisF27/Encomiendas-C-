@@ -2,8 +2,8 @@
 #define VEHICULO_C
 
 #include "../helpers/EstadoVehiculo.c"
-#include "Encomienda.c"
-
+#include "Ciudad.h"
+#include "Fecha.c"
 
 typedef struct vehiculo {
         char matricula [6];
